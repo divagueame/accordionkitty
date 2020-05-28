@@ -1,0 +1,429 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&family=David+Libre&family=Scope+One&display=swap');
+
+
+:root {
+    --dark1: #090909;
+    --dark2: #4b5043;
+    --dark3: #9bc4bc;
+    --light1: #d3ffe9;
+    --light2: #8ddbe0;
+    --white: rgb(255, 255, 255);
+    --black: #000;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Scope One', serif;
+}
+
+body {
+    color: var(--black);
+    background-color: var(--white);
+    margin: 0;
+    top: 0px;
+    left: 0px;
+    
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark1);
+}
+
+header {
+    background-color: rgb(192, 192, 192);
+    width: 100%;
+    height: 20%;
+    
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5em;
+    
+    /* //SHADOW */
+    background: rgba(192,192,192,1);
+    background: -moz-linear-gradient(-45deg, rgba(192,192,192,1) 0%, rgba(224,224,224,1) 63%, rgba(199,199,199,1) 81%, rgba(143,143,143,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(192,192,192,1)), color-stop(63%, rgba(224,224,224,1)), color-stop(81%, rgba(199,199,199,1)), color-stop(100%, rgba(143,143,143,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(192,192,192,1) 0%, rgba(224,224,224,1) 63%, rgba(199,199,199,1) 81%, rgba(143,143,143,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(192,192,192,1) 0%, rgba(224,224,224,1) 63%, rgba(199,199,199,1) 81%, rgba(143,143,143,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(192,192,192,1) 0%, rgba(224,224,224,1) 63%, rgba(199,199,199,1) 81%, rgba(143,143,143,1) 100%);
+    background: linear-gradient(135deg, rgba(192,192,192,1) 0%, rgba(224,224,224,1) 63%, rgba(199,199,199,1) 81%, rgba(143,143,143,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0c0c0', endColorstr='#8f8f8f', GradientType=1 );
+
+}
+
+
+#logo-top {
+    height: 5em;
+}
+.wrapper {
+    width: 75%;
+    margin: 0 auto
+}
+
+.level-title {
+    background-color: rgba(186, 240, 191,1);
+    cursor: pointer;
+    padding: 1em;
+    
+    transition: 0.83s;
+}
+
+.level-title:hover {
+    background-color: rgba(186, 240, 191,0.4);
+
+}
+.level-selector {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.level-title {
+
+    
+}
+
+.level-title:hover {
+    background-color: rgba(186, 240, 191,0.4);
+    transition: 0.1s
+}
+.border-around {
+    border-radius: 0.21em;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.basic-shadow {
+    -webkit-box-shadow: 5px 5px 3px -4px rgba(0,0,0,0.32);
+    -moz-box-shadow: 5px 5px 3px -4px rgba(0,0,0,0.32);
+    box-shadow: 5px 5px 3px -4px rgba(0,0,0,0.32);
+}
+
+.level-active {
+    background-color: rgb(255, 166, 0);
+}
+.inline-please {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.learning-block {
+    margin-top: 1.2em;
+    border-left: rgb(214, 13, 13) solid 3px;
+}
+
+.block-title {
+display: flex;
+align-items: baseline;
+padding: 0.31em;
+cursor: pointer;
+
+}
+
+.block-collapsed {
+  border-bottom: rgb(214, 13, 13) solid 3px;
+}
+
+.task {
+        margin: 1em;
+        border-radius: 0.12em;
+        overflow: hidden;
+}
+
+ .task-title {
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+
+}
+  
+  /* We tell all items to be 100% width, via flex-basis */
+  .wrapper > * {
+    flex: 1 100%;
+  }
+  
+
+
+  #tasks-container {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+}
+
+li {
+    list-style-type: none;
+    border: 1px solid rgb(0, 0, 0);
+    margin-top: 5px;
+    margin-bottom: 0.42em;
+    width: 100%;
+
+}
+
+.info-card {
+    /* display: none; */
+    width: 100%;
+
+}
+
+
+.task-bg-container {
+    overflow: hidden;
+}
+.task-bg {
+    background-image: url("./img/task-bg/level1.1.2.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    background-position: center;
+    background-color: ghostwhite;
+    border-bottom: 0.5em white solid;
+}
+.info-card-content-container{
+        display: flex;
+        
+}
+
+.info-card-content {
+    padding: 1em;
+}
+.task-description {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+.target-speed-container {
+    padding-right: 1.2em;
+    padding-left: 1.2em;
+  }
+.target-speed {
+    border: 0px
+}
+.target-header {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-wrapper > p{
+    margin-left: 0.2em;
+}
+
+  .checkbox-wrapper {
+    display: flex;
+    margin: 2px;
+}
+
+
+.icon {
+    width: 1em;
+    margin: 0.3em;
+}
+.icon-big {
+    width: 3em;
+}
+
+
+.btn-practice {
+    text-align: center;
+    margin: 2px;
+}
+
+.btn-practice > button {
+    background-color: peachpuff;
+    padding: 1em;
+    margin: 1em;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 0.4em;
+    cursor: pointer;
+}
+
+.btn-practice > button:hover {
+    background-color: rgb(255, 227, 232);
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+/* CHECKBOX */
+.checkbox {
+    --background: #fff;
+    --border: #D1D6EE;
+    --border-hover: #BBC1E1;
+    --border-active: #1E2235;
+    --tick: #fff;
+    position: relative;
+  }
+  .checkbox input,
+  .checkbox svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+  }
+  .checkbox input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    outline: none;
+    background: var(--background);
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    -webkit-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+    box-shadow: inset 0 0 0 var(--s, 1px) var(--b, var(--border));
+  }
+  .checkbox input:hover {
+    --s: 2px;
+    --b: var(--border-hover);
+  }
+  .checkbox input:checked {
+    --b: var(--border-active);
+  }
+  .checkbox svg {
+    pointer-events: none;
+    fill: none;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--stroke, var(--border-active));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 21px;
+    height: 21px;
+    -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+            transform: scale(var(--scale, 1)) translateZ(0);
+  }
+  .checkbox.path input:checked {
+    --s: 2px;
+    -webkit-transition-delay: .4s;
+            transition-delay: .4s;
+  }
+  .checkbox.path input:checked + svg {
+    --a: 16.1 86.12;
+    --o: 102.22;
+  }
+  .checkbox.path svg {
+    stroke-dasharray: var(--a, 86.12);
+    stroke-dashoffset: var(--o, 86.12);
+    -webkit-transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+    transition: stroke-dasharray .6s, stroke-dashoffset .6s;
+  }
+  .checkbox.bounce {
+    --stroke: var(--tick);
+  }
+  .checkbox.bounce input:checked {
+    --s: 11px;
+  }
+  .checkbox.bounce input:checked + svg {
+    -webkit-animation: bounce .4s linear forwards .2s;
+            animation: bounce .4s linear forwards .2s;
+  }
+  .checkbox.bounce svg {
+    --scale: 0;
+  }
+  
+  @-webkit-keyframes bounce {
+    50% {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+              transform: scale(0.9);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  
+  @keyframes bounce {
+    50% {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+              transform: scale(0.9);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  * {
+    box-sizing: inherit;
+  }
+  *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    background: #F6F8FF;
+  }
+  body .grid {
+    display: grid;
+  }
+  body .dribbble {
+    position: fixed;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+  }
+  body .dribbble img {
+    display: block;
+    height: 28px;
+  }
+  body .twitter {
+    position: fixed;
+    display: block;
+    right: 64px;
+    bottom: 14px;
+  }
+  body .twitter svg {
+    width: 32px;
+    height: 32px;
+    fill: #1da1f2;
+  }
+  
+
+  #top-name {
+    font-family: 'Yeseva One', cursive !important ;
+}
