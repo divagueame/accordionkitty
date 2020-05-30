@@ -80,12 +80,6 @@ header {
     justify-content: center;
     
 }
-
-.level-title {
-
-    
-}
-
 .level-title:hover {
     background-color: rgba(186, 240, 191,0.4);
     transition: 0.1s
@@ -114,7 +108,7 @@ header {
 }
 .learning-block {
     margin-top: 1.2em;
-    border-left: rgb(214, 13, 13) solid 3px;
+
 }
 
 .block-title {
@@ -122,6 +116,7 @@ display: flex;
 align-items: baseline;
 padding: 0.31em;
 cursor: pointer;
+border-left: rgb(214, 13, 13) solid 3px;
 
 }
 
@@ -146,12 +141,15 @@ cursor: pointer;
     flex: 1 100%;
   }
   
+.left-red{
+  border-left: rgb(214, 13, 13) solid 3px !important  ;
+}
 
-
-  #tasks-container {
+.tasks-container {
     display: flex;
     justify-content: center;
 }
+
 
 ul {
     display: flex;
@@ -179,12 +177,15 @@ li {
 
 }
 
+.hidden {
+  display: none
+}
 
 .task-bg-container {
     overflow: hidden;
 }
 .task-bg {
-    background-image: url("./img/task-bg/level1.1.2.jpeg");
+    /* background-image: url("./img/task-bg/level1.1.2.jpeg"); */
     background-repeat: no-repeat;
     background-size: cover;
     height: 100px;
@@ -427,3 +428,52 @@ li {
   #top-name {
     font-family: 'Yeseva One', cursive !important ;
 }
+
+
+.wrapper2 {
+
+  width: 75%;
+  margin: 0 auto
+}
+
+.progress-bar-container{ 
+  /* width: 33em; */
+  width: 70%;
+  margin-top: 1em;
+  margin: 0 auto;
+}
+.progress-bar-title{
+  display: flex;
+  align-items: center;
+}
+.progress-bar-title > img {
+  background-color: rgb(255, 255, 255);
+  /* border-radius: 1em; */
+  border-radius: 100%;
+  /* padding: 1em; */
+  border: rgb(214, 13, 13)  2px solid;
+  /* margin: 0.2em; */
+  width: 2em;
+}
+
+.progress-bar{
+  
+  background-color: rgb(0, 0, 0);
+  height: 1em;
+  display: flex;
+  border-radius: 2.4em;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+
+  background: #E38181;
+  background: -webkit-linear-gradient(left, #E38181, #DC110A);
+  background: -moz-linear-gradient(left, #E38181, #DC110A);
+  background: linear-gradient(to right, rgb(255, 217, 0), rgb(243, 0, 0));
+  border-radius: 2.4em; 
+  width: 1%;
+  margin: 0.17em;
+}
+
+
