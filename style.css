@@ -505,9 +505,7 @@ li {
   height: 24em;
   scroll-snap-type: x mandatory; 
  }
- .question-answer-wrapper > div {
-  scroll-snap-align: start;
- };
+
 
 .question-answer{
   background-color: darkgray;
@@ -518,7 +516,9 @@ li {
   -webkit-overflow-scrolling: touch;
 
 }
-
+ .question-answer-wrapper > div {
+  scroll-snap-align: start;
+ };
 
 .question {
 
