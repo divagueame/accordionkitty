@@ -511,6 +511,7 @@ li {
   width: 300px;
   flex-shrink: 0;
   height: 100%;
+  scroll-snap-align: start;
 }
 .slides > div {
   /* CURRENT way. */
