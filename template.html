@@ -14,14 +14,14 @@
         <!-- <link href="./pattern.min.css" rel="stylesheet"> -->
     </head>
     <body>
-        
+       
  <header>
                 <img src="./img/logo.png" id="logo-top" alt="Accordion kitty logo">
                 <h1 id="top-name">Accordion Kitty!</h1>
  </header>
 
 <!-- FLOATS BOTTOM . WORKING -->
-<a class="floater faq" target="_blank" href="">
+<a class="floater faq">
     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><path d="M67.812 16.141a26.246 26.246 0 0 1-7.519 2.06 13.134 13.134 0 0 0 5.756-7.244 26.127 26.127 0 0 1-8.313 3.176A13.075 13.075 0 0 0 48.182 10c-7.229 0-13.092 5.861-13.092 13.093 0 1.026.118 2.021.338 2.981-10.885-.548-20.528-5.757-26.987-13.679a13.048 13.048 0 0 0-1.771 6.581c0 4.542 2.312 8.551 5.824 10.898a13.048 13.048 0 0 1-5.93-1.638c-.002.055-.002.11-.002.162 0 6.345 4.513 11.638 10.504 12.84a13.177 13.177 0 0 1-3.449.457c-.846 0-1.667-.078-2.465-.231 1.667 5.2 6.499 8.986 12.23 9.09a26.276 26.276 0 0 1-16.26 5.606A26.21 26.21 0 0 1 4 55.976a37.036 37.036 0 0 0 20.067 5.882c24.083 0 37.251-19.949 37.251-37.249 0-.566-.014-1.134-.039-1.694a26.597 26.597 0 0 0 6.533-6.774z"></path>
     </svg> -->
     <img src="./img/icons/question.svg" alt="">
@@ -38,6 +38,7 @@
 
 
 <div class="wrapper">
+
     <div class="level">
         <div class="level-selector">
             <div class="border-around basic-shadow">
@@ -80,137 +81,98 @@
     <img class="icon" src="./img/icons/mail.svg" alt="">
     <img class="icon" src="./img/icons/music.svg" alt="">
     <img class="icon" src="./img/icons/info.svg" alt="">
-
     <img class="icon" src="./img/icons/message-circle.svg" alt="">
     <img class="icon" src="./img/icons/percent.svg" alt="">
-
     <img class="icon" src="./img/icons/trash-2.svg" alt="">
 </div>
 
 
 <!-- ///FAQ -->
 
-<div class="faq-overlay">
+<div class="faq-overlay hidden">
     <div class="faq-content">
         <div class="faq-header">
             <div class="spacer"></div>
             <div>
-                <h1 id="faq-title">CTOTO</h1>
+                <h1 id="faq-title">FAQ</h1>
             </div>
             <div class="close-button">
                 <svg class="close" viewBox="0 0 1 1" height="1" width="1" version="1.1" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="1" x2="1" y2="0" stroke="black" stroke-width="0.1" /><line x1="0" y1="0" x2="1" y2="1" stroke="black" stroke-width="0.1" /></svg>
             </div>
         </div>
-        <div class="bottom-wrapper">
 
 
-
-            <div class="slide-wrap">
-
-                <div class="slider">
-                    <div class="slide" id="slide-1">1</div>
-                    <div class="slide" id="slide-2">2</div>
-                    <div class="slide" id="slide-3">3</div>
-                    <div class="slide" id="slide-4">4</div>
-                    <div class="slide" id="slide-5">5</div>
+        <div class="bottom-wrapper">            
+            <div class="carousel-wrapper">
+                <div class="carousel">
+                  <div class="carousel__photo">
+                    <div class="question-answer"  id="question-1">
+                        <div class="question">
+                            <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
+                            <h3>What is this website about?</h3>
+                        </div>
+                        <div class="answer">
+                            <p>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</p>
+                        </div>
+                    </div>  
+                  </div>
+                  <div class="carousel__photo">
+                    <div class="question-answer"  id="question-1">
+                        <div class="question">
+                            <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
+                            <h3>How much does this cost?</h3>
+                        </div>
+                        <div class="answer">
+                            <p>AccordionKity only uses free lessons from all over the world. So it's free! For real! Just enjoy it!</p>
+                        </div>
+                    </div>  
+                  </div>
+                  <div class="carousel__photo">
+                    <div class="question-answer"  id="question-1">
+                        <div class="question">
+                            <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
+                            <h3>Where do I start?</h3>
+                        </div>
+                        <div class="answer">
+                            <p>Level 1! Obviously! Don't spend too much time on each exercise, you better work for 5-10 minutes and then move on to another one and come back later.</p>
+                        </div>
+                    </div>  
+                  </div>
+                  <div class="carousel__photo">
+                    <div class="question-answer"  id="question-1">
+                        <div class="question">
+                            <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
+                            <h3>4 What is this website about?</h3>
+                        </div>
+                        <div class="answer">
+                            <p>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</p>
+                        </div>
+                    </div>  
+                  </div>
+                  <div class="carousel__photo">
+                    <div class="question-answer"  id="question-1">
+                        <div class="question">
+                            <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
+                            <h3>5 What is this website about?</h3>
+                        </div>
+                        <div class="answer">
+                            <p>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</p>
+                        </div>
+                    </div>  
+                  </div>
+                  
+                    
+                  <div class="carousel__button--next"></div>
+                  <div class="carousel__button--prev"></div>
                 </div>
-                <div class="slide-links-container"> 
-                    <a href="#slide-1">1</a>
-                    <a href="#slide-2">2</a>
-                    <a href="#slide-3">3</a>
-                    <a href="#slide-4">4</a>
-                    <a href="#slide-5">5</a>
-                </div>
-            </div>
-
-            <div class="previous-question-button"></div>
-
-            <div class="question-answer-wrapper">
-
-
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-
-                <div class="question-answer">
-                    <div class="question">
-                        <img class="icon-big" src="./img/icons/speech-bubble.svg" alt="">
-                        <h4>What is this website about?</h2>
-
-                    </div>
-                    <div class="answer">
-                        <h4>It's a guided learning route to learn accordion on a practical way while still learning the main music principles which would help you play any other instrument.</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="next-question-button"></div>
+            </div> 
         </div>
 
 <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
     </div>
 </div>
+
+
         <script src="index.js"></script>     
     </body>
 </html>

@@ -424,6 +424,7 @@ li {
 .faq {
   right: 1em;
   bottom: 14px;
+  cursor: pointer;
 }
 
 .socialist{
@@ -446,21 +447,26 @@ li {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.836);
+  background-color: rgba(155, 155, 155, 0.836);
+  /* background-image: linear-gradient(to right bottom, #ff4e4e, #ff794d, #ff9d56, #ffbd6b, #fdda8a, #fde19a, #fee8aa, #ffeeba, #ffe4bb, #ffdbc1, #ffd4c8, #ffcfcf); */
+  
   overflow: hidden;
 }
 #faq-title {
-  font-family: 'Arial', cursive !important ;
+  /* font-family: 'Arial', cursive !important ; */
+  font-family: 'Roboto', sans-serif;
 }
 
 .faq-content {
-  background-color: black;
-  width: 50em;
+  background-color: rgb(255, 255, 255);
+  width: 44em;
   height: 27em;
   margin: 0 auto;
   margin-top: 3em;
   border-radius: 0.5em;
   overflow: hidden;
+  
+
 }
 
 .faq-header{
@@ -482,7 +488,6 @@ li {
   height: 32px;
 }
 
-
 .close-button {
   margin-left: auto;
   width: 32px;
@@ -491,6 +496,7 @@ li {
   padding: 0.3em;
 }
 .close-button:hover {
+  cursor: pointer;
   opacity: 1;
   transition: all .2s;
   transform: scale(1.1);
@@ -500,86 +506,134 @@ li {
   height: 100%;
 }
 
-.previous-question-button, .next-question-button{
-  height: 100%;
-  width: 1em;
-  background-color: cadetblue;
+
+
+/* ///////////////// FAQ SLIDER */
+
+/* Parent wrapper to carousel. Width can be changed as needed. */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 450px;
+  margin: auto;
+  background-color: rgba(184, 28, 28, 0.7);
+  border-radius: 1em;
+  margin-top: 2em;
+  height: 18em;
 }
-.slide-links-container {
-  background-color: rgb(255, 166, 0);
-  display: flex;
-  justify-content: center;
-  padding: 0.45em;
+ p {
+  text-align: justify;
+}
+/* Apply 'border-box' to 'box-sizing' so border and padding is included in the width and height. */
+.carousel-wrapper * {
+  box-sizing: border-box;
 }
 
-.slide-wrap a{
-  display: inline-flex;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
-  background-color: aliceblue; 
-  align-items: center;
-  justify-content: center;
+/* We'll be using the 'transform' property to move the carousel's items, so setting the 'transform-style' to 'preserve-3d' will make sure our nested elements are rendered properly in the 3D space. */
+.carousel {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* By default we're hiding items (except the initial one) until the JS initiates. Elements are absolutely positioned with a width of 100% (as we're styling for mobile first), letting the content's height dictate the height of the carousel. Our magic property here for all our animation needs is 'transition', taking the properties we wish to animate 'transform' and 'opacity', along with the length of time in seconds. */
+.carousel__photo {
+  /* //OPTIONAL */
+  background-color: rgba(255, 255, 255, 0.4); 
+  height: 500px;
+  padding: 2em;
+  opacity: 0;
+  position: absolute;
+  top:0;
+  width: 100%;
+  margin: auto;
+  padding: 1rem 4rem;
+  z-index: 100;
+  transition: transform .5s, opacity .5s, z-index .5s;
+}
+
+/* Display the initial item and bring it to the front using 'z-index'. These styles also apply to the 'active' item. */
+.carousel__photo.initial,
+.carousel__photo.active {
+  opacity: 1;
+  position: relative;
+  z-index: 900;
+}
+
+/* Set 'z-index' to sit behind our '.active' item. */
+.carousel__photo.prev,
+.carousel__photo.next {
+  z-index: 800;
+}
+
+/* Translate previous item to the left */
+.carousel__photo.prev {
+  transform: translateX(-100%);
+}
+
+/* Translate next item to the right */
+.carousel__photo.next {
+  transform: translateX(100%);
+}
+
+/* Style navigation buttons to sit in the middle, either side of the carousel. */
+.carousel__button--prev,
+.carousel__button--next {
+  position: absolute;
+  top: 20%;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #FFF;
+  /* transform: translateY(-50%); */
   border-radius: 50%;
-  color: rgb(0, 0, 0);
-  padding: 0.3em;
-  margin: 1em;
-  border: 2px solid var(--main-red);
-  width: 2.5em;
-  height: 2.5em;
+  cursor: pointer; 
+  margin: 0 .5em 0 .5em;
+  z-index: 1001; /* Sit on top of everything */
+  border: 2.4px solid black;
+/*  opacity: 0;  Hide buttons until carousel is initialised 
+  transition:opacity 1s;*/
 }
 
-.slider {
-  color: aquamarine;
-  width: 100%;
-  height: 300px;
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;  
-}
-.slide {
-  padding: 1.4em;
-  border: 0.4em rgba(255, 255, 255, 0.1) solid;
-  width: 100%;
-  flex-shrink: 0;
-  height: 100%;
-  scroll-snap-align: start;
-  scroll-behavior: smooth;
-  background-color: rgb(204, 20, 20);
-}
-.slides > div {
-  scroll-snap-align: start;
+.carousel__button--prev {
+  left:0;
 }
 
-
-.slides > div:target {
-  transform: scale(0.8);
+.carousel__button--next {
+  right:0;
 }
 
- .question-answer-wrapper {
-display: none;
- }
-
-
-.question-answer{
-
-  
-
+/* Use pseudo elements to insert arrows inside of navigation buttons */
+.carousel__button--prev::after,
+.carousel__button--next::after {
+  content: " ";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 54%;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: translate(-50%, -50%) rotate(135deg);
 }
- .question-answer > div {
- }
+
+.carousel__button--next::after {
+  left: 47%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
 
 .question {
-
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  margin-bottom: .5em;
 }
 
 .question > img {
-
+  margin-right: .4em;
 }
 
-
-
-
+/* asdasd */
 .wrapper2, 
 .level1-wrapper,
 .level2-wrapper,

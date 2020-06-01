@@ -10,11 +10,8 @@ const level2 = document.querySelector(".level2-wrapper");
 const level3 = document.querySelector(".level3-wrapper");
 const level4 = document.querySelector(".level4-wrapper");
 
-function animateBottomLogos(){
-    const bottomLogos = document.childNodes("bottom-logos");
-    console.log("BOM", bottomLogos)
-};
 
+//Level Change
 function levelChange(newLevel,newButton){
     level1.classList.add("hidden");
     level2.classList.add("hidden");
@@ -44,32 +41,50 @@ level4Button.addEventListener('click', function(){
 })
 
 //Create task card
-let cardTitle = "2. Ode to Joy";
-let imgId = cardTitle.replace(/\s/g , "_")+"imgId";
-let imgUrl = './img/task-bg/level1.1.2.jpeg';
-let author = "Liberty bellows."
-let platform = "Youtube "
-let description = "Practice slowly. Start with the right hand very slowly and make sure you move steadily your way up. Move on to the next exercise before 8 minutes even though you might need more sessions to improve your BPM."
+// let cardTitle = "2. Ode to Joy";
+// let imgId = cardTitle.replace(/\s/g , "_")+"imgId";
+// let imgUrl = './img/task-bg/level1.1.2.jpeg';
+// let author = "Liberty bellows."
+// let platform = "Youtube "
+// let description = "Practice slowly. Start with the right hand very slowly and make sure you move steadily your way up. Move on to the next exercise before 8 minutes even though you might need more sessions to improve your BPM."
 
 
-function createCard(cardTitle, imgId, author, imgUrl, targetDiv){
+
+// 
+let sampleObj = {
+    cardTitle: "2. Ode to Joy",
+    imgId: "",
+    imgUrl: './img/task-bg/level1.1.2.jpeg',
+    author: "Liberty bellows.",
+    platform: "Youtube ",
+    description: "Practice slowly. Start with the right hand very slowly and make sure you move steadily your way up. Move on to the next exercise before 8 minutes even though you might need more sessions to improve your BPM."
+};
+sampleObj.imgId = sampleObj.cardTitle.replace(/\s/g , "_")+"imgId"+Math.floor(Math.random()*9999)
+
+// const cardFactory
+
+
+
+
+// function createCard(cardTitle, imgId, author, imgUrl, targetDiv){
+function createCard(obj,targetDiv){
 const task = document.createElement("li");
 task.innerHTML = `
         <div class="inline-please task-title ">
             <img class="icon" src="./img/icons/chevrons-right.svg" alt="">
-            <h3>${cardTitle}</h3>
+            <h3>${obj.cardTitle}</h3>
         </div>
         <div class="info-card hidden">
             <div class="task-bg-container">
-                <div class="task-bg" id=${imgId}></div>
+                <div class="task-bg" id=${obj.imgId}></div>
             </div>
             <div class="info-card-content-container">
                 <div class="info-card-content">
                     <div class="inline-please"><img class="icon" src="./img/icons/info.svg" alt="">
-                    <p>Author: ${author}</p>
+                    <p>Author: ${obj.author}</p>
                     </div>
-                    <p>Platform: ${platform}</p>
-                    <p class="task-description">Description: ${description}</p>
+                    <p>Platform: ${obj.platform}</p>
+                    <p class="task-description">Description: ${obj.description}</p>
                 </div>
                 <div class="target-speed-container">
                     <div class="target-header">
@@ -138,11 +153,11 @@ task.innerHTML = `
             <button class="basic-shadow"><h3>Practice now</h3></button>
         </div>
 `
-targetDiv.appendChild(task);
+document.querySelector(targetDiv).appendChild(task);
 // {/* <li class="task basic-shadow"></li> */}
 task.classList.add("task");
 task.classList.add("basic-shadow");
-document.getElementById(imgId).style.backgroundImage = `url(${imgUrl})`;
+document.getElementById(obj.imgId).style.backgroundImage = `url(${obj.imgUrl})`;
 
 }
 
@@ -173,21 +188,37 @@ createLearningBlock("Rythm foundations",level1);
 createLearningBlock("Music theory in action",level1);
 createLearningBlock("Hand coordination",level1);
 
+createLearningBlock("Songs block",level2);
+createLearningBlock("Finger dexterity",level2);
+createLearningBlock("Rythm foundations",level2);
+createLearningBlock("Music theory in action",level2);
 createLearningBlock("Hand coordination",level2);
-createLearningBlock("Hand coordination",level2);
+
+createLearningBlock("Songs block",level3);
+createLearningBlock("Finger dexterity",level3);
+createLearningBlock("Rythm foundations",level3);
+createLearningBlock("Music theory in action",level3);
+createLearningBlock("Hand coordination",level3);
+
+createLearningBlock("Songs block",level4);
+createLearningBlock("Finger dexterity",level4);
+createLearningBlock("Rythm foundations",level4);
+createLearningBlock("Music theory in action",level4);
+createLearningBlock("Hand coordination",level4);
 
 // Populate each level with the tasks
-createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Songs-block > UL"));
-createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
-createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
-createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
-createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Hand-coordination > UL"));
+// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Songs-block > UL"));
+// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
+// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
+// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
+// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Hand-coordination > UL"));
 
-
-
-
-
-
+createCard(sampleObj, "#Songs-block > UL");
+sampleObj.imgId = sampleObj.cardTitle.replace(/\s/g , "_")+"imgId"+Math.floor(Math.random()*9999)
+createCard(sampleObj, "#Songs-block > UL");
+createCard(sampleObj, "#Songs-block > UL");
+createCard(sampleObj, "#Songs-block > UL");
+createCard(sampleObj, "#Songs-block > UL");
 
 
 
@@ -264,3 +295,162 @@ for(let i=0;i<checkboxes.length;i++){
 
 //On load, show level 1 by default
 levelChange(level1,level1Button);
+
+
+
+/// FAQ LAYOVER SHOW AND HIDE
+const closeButton = document.querySelector(".close-button");
+const faqOverlay = document.querySelector(".faq-overlay");
+const faqButton =  document.querySelector(".faq");
+closeButton.addEventListener("click", function(){
+    faqOverlay.classList.add("hidden");
+});
+
+faqButton.addEventListener("click", function(){
+    faqOverlay.classList.remove("hidden")
+});
+
+faqOverlay.addEventListener("click", function(e){
+    if (e.target === this){
+        faqOverlay.classList.add("hidden");
+    }
+});
+
+
+
+//////////// SLIDER
+!(function(d){
+    // Variables to target our base class,  get carousel items, count how many carousel items there are, set the slide to 0 (which is the number that tells us the frame we're on), and set motion to true which disables interactivity.
+    var itemClassName = "carousel__photo";
+        items = d.getElementsByClassName(itemClassName),
+        totalItems = items.length,
+        slide = 0,
+        moving = true; 
+  
+    // To initialise the carousel we'll want to update the DOM with our own classes
+    function setInitialClasses() {
+  
+      // Target the last, initial, and next items and give them the relevant class.
+      // This assumes there are three or more items.
+      items[totalItems - 1].classList.add("prev");
+      items[0].classList.add("active");
+      items[1].classList.add("next");
+    }
+  
+    // Set click events to navigation buttons
+  
+    function setEventListeners() {
+      var next = d.getElementsByClassName('carousel__button--next')[0],
+          prev = d.getElementsByClassName('carousel__button--prev')[0];
+  
+      next.addEventListener('click', moveNext);
+      prev.addEventListener('click', movePrev);
+    }
+  
+    // Disable interaction by setting 'moving' to true for the same duration as our transition (0.5s = 500ms)
+    function disableInteraction() {
+      moving = true;
+  
+      setTimeout(function(){
+        moving = false
+      }, 500);
+    }
+  
+    function moveCarouselTo(slide) {
+  
+      // Check if carousel is moving, if not, allow interaction
+      if(!moving) {
+  
+        // temporarily disable interactivity
+        disableInteraction();
+  
+        // Preemptively set variables for the current next and previous slide, as well as the potential next or previous slide.
+        var newPrevious = slide - 1,
+            newNext = slide + 1,
+            oldPrevious = slide - 2,
+            oldNext = slide + 2;
+  
+        // Test if carousel has more than three items
+        if ((totalItems - 1) > 3) {
+  
+          // Checks if the new potential slide is out of bounds and sets slide numbers
+          if (newPrevious <= 0) {
+            oldPrevious = (totalItems - 1);
+          } else if (newNext >= (totalItems - 1)){
+            oldNext = 0;
+          }
+  
+          // Check if current slide is at the beginning or end and sets slide numbers
+          if (slide === 0) {
+            newPrevious = (totalItems - 1);
+            oldPrevious = (totalItems - 2);
+            oldNext = (slide + 1);
+          } else if (slide === (totalItems -1)) {
+            newPrevious = (slide - 1);
+            newNext = 0;
+            oldNext = 1;
+          }
+  
+          // Now we've worked out where we are and where we're going, by adding and removing classes, we'll be triggering the carousel's transitions.
+  
+          // Based on the current slide, reset to default classes.
+          items[oldPrevious].className = itemClassName;
+          items[oldNext].className = itemClassName;
+  
+          // Add the new classes
+          items[newPrevious].className = itemClassName + " prev";
+          items[slide].className = itemClassName + " active";
+          items[newNext].className = itemClassName + " next";
+        }
+      }
+    }
+  
+    // Next navigation handler
+    function moveNext() {
+  
+      // Check if moving
+      if (!moving) {
+  
+        // If it's the last slide, reset to 0, else +1
+        if (slide === (totalItems - 1)) {
+          slide = 0;
+        } else {
+          slide++;
+        }
+  
+        // Move carousel to updated slide
+        moveCarouselTo(slide);
+      }
+    }
+  
+    // Previous navigation handler
+    function movePrev() {
+  
+      // Check if moving
+      if (!moving) {
+  
+        // If it's the first slide, set as the last slide, else -1
+        if (slide === 0) {
+          slide = (totalItems - 1);
+        } else {
+          slide--;
+        }
+  
+        // Move carousel to updated slide
+        moveCarouselTo(slide);
+      }
+    }
+  
+    // Initialise carousel
+    function initCarousel() {
+      setInitialClasses();
+      setEventListeners();
+  
+      // Set moving to false now that the carousel is ready
+      moving = false;
+    }
+  
+    // make it rain
+    initCarousel();
+  
+  }(document));
