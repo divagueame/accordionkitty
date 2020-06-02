@@ -232,6 +232,15 @@ li {
     margin: 2px;
 }
 
+.bottom-logos > .icon {
+
+}
+
+.bottom-logos > .icon:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+  transition: all 0.31s ease-out
+}
 
 .icon {
     width: 1em;
@@ -430,6 +439,43 @@ li {
 .socialist{
   right: 64px;
   bottom: 14px;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 25%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: 20px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.socialist:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.faq:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 .regular-accordionist{

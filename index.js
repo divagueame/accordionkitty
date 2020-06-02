@@ -40,33 +40,22 @@ level4Button.addEventListener('click', function(){
     levelChange(level4,level4Button);
 })
 
-//Create task card
-// let cardTitle = "2. Ode to Joy";
-// let imgId = cardTitle.replace(/\s/g , "_")+"imgId";
-// let imgUrl = './img/task-bg/level1.1.2.jpeg';
-// let author = "Liberty bellows."
-// let platform = "Youtube "
-// let description = "Practice slowly. Start with the right hand very slowly and make sure you move steadily your way up. Move on to the next exercise before 8 minutes even though you might need more sessions to improve your BPM."
+
+/// Factory Function
+const createCardObj = (cardTitle, imgUrl, author, platform, description) => {
+    let imgId = cardTitle.replace(/\s/g , "_")+"imgId"+Math.floor(Math.random()*9999);
+    return {
+        cardTitle,
+        imgId,
+        imgUrl,
+        author,
+        platform,
+        description
+    }
+}
 
 
-
-// 
-let sampleObj = {
-    cardTitle: "2. Ode to Joy",
-    imgId: "",
-    imgUrl: './img/task-bg/level1.1.2.jpeg',
-    author: "Liberty bellows.",
-    platform: "Youtube ",
-    description: "Practice slowly. Start with the right hand very slowly and make sure you move steadily your way up. Move on to the next exercise before 8 minutes even though you might need more sessions to improve your BPM."
-};
-sampleObj.imgId = sampleObj.cardTitle.replace(/\s/g , "_")+"imgId"+Math.floor(Math.random()*9999)
-
-// const cardFactory
-
-
-
-
-// function createCard(cardTitle, imgId, author, imgUrl, targetDiv){
+//Create task card 
 function createCard(obj,targetDiv){
 const task = document.createElement("li");
 task.innerHTML = `
@@ -162,10 +151,10 @@ document.getElementById(obj.imgId).style.backgroundImage = `url(${obj.imgUrl})`;
 }
 
 //CREATE LEARNING BLOCK
-
 function createLearningBlock(title,level){
     let blockTitle = title;
-    let blockId = title.replace(/\s/,"-");
+    let blockId = title.replace(/\s/g,"-");
+    // blockId += level;
     const learningBlock = document.createElement("div");
     learningBlock.innerHTML = `
         <div class="block-title block-collapsed">
@@ -206,19 +195,39 @@ createLearningBlock("Rythm foundations",level4);
 createLearningBlock("Music theory in action",level4);
 createLearningBlock("Hand coordination",level4);
 
-// Populate each level with the tasks
-// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Songs-block > UL"));
-// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
-// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
-// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Finger-dexterity > UL"));
-// createCard(cardTitle, imgId, author, imgUrl, document.querySelector("#Hand-coordination > UL"));
 
-createCard(sampleObj, "#Songs-block > UL");
-sampleObj.imgId = sampleObj.cardTitle.replace(/\s/g , "_")+"imgId"+Math.floor(Math.random()*9999)
-createCard(sampleObj, "#Songs-block > UL");
-createCard(sampleObj, "#Songs-block > UL");
-createCard(sampleObj, "#Songs-block > UL");
-createCard(sampleObj, "#Songs-block > UL");
+// / CREATE OBJECTS OF THE TASKS level1.songs2.jpg
+let level1Songs1 = createCardObj("1. Row Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1Songs2 = createCardObj("2. Ode to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.");
+
+let level1FingerDexterity1 = createCardObj("1. Row Row", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1FingerDexterity2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+
+let level1RythmFoundations1 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1RythmFoundations2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+
+let level1MusicTheory1 = createCardObj("1s. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1MusicTheory2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+
+let level1HandCoordination1 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1HandCoordination2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+
+// Populate each level with the tasks
+createCard(level1Songs1, "#Songs-block > UL");
+createCard(level1Songs2, "#Songs-block > UL");
+
+createCard(level1FingerDexterity1, "#Finger-dexterity > UL");
+createCard(level1FingerDexterity2, "#Finger-dexterity > UL");
+
+createCard(level1RythmFoundations1, "#Rythm-foundations > UL");
+createCard(level1RythmFoundations2, "#Rythm-foundations > UL");
+
+createCard(level1MusicTheory1, "#Music-theory-in-action > UL"); 
+// createCard(level1MusicTheory2, "#Music-theory-in-action > UL");
+
+createCard(level1HandCoordination1, "#Hand-coordination > UL");
+createCard(level1HandCoordination2, "#Hand-coordination > UL");
+
 
 
 
