@@ -68,17 +68,18 @@ header {
 }
 .wrapper {
     width: 75%;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .level-title {
     background-color: rgb(206, 206, 206);
     cursor: pointer;
     padding: 1em;
-    
     transition: 0.83s;
 }
-
+.level-title > h3 {
+  text-align: center;
+}
 
 .level-selector {
     display: flex;
@@ -107,6 +108,18 @@ header {
 .level-active {
     background-color: rgb(255, 166, 0);
 }
+
+.level-animation{
+  box-sizing: border-box;
+  transition: all 1s ease-in-out;
+}
+
+.level-animation-hidden {
+  opacity: 0;
+  transform: translateY(-0.51em);
+
+}
+
 .inline-please {
     display: flex;
     flex-direction: row;
@@ -439,6 +452,7 @@ li {
 .socialist{
   right: 64px;
   bottom: 14px;
+  cursor: pointer;
 }
 
 .tooltiptext {

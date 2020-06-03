@@ -10,6 +10,13 @@ const level2 = document.querySelector(".level2-wrapper");
 const level3 = document.querySelector(".level3-wrapper");
 const level4 = document.querySelector(".level4-wrapper");
 
+// Level Display Initial Animation
+const levelsWrapper = document.querySelector(".level-animation");
+
+window.addEventListener('load', function(){
+    levelsWrapper.classList.toggle("level-animation-hidden");
+    
+})
 
 //Level Change
 function levelChange(newLevel,newButton){
@@ -42,7 +49,7 @@ level4Button.addEventListener('click', function(){
 
 
 /// Factory Function
-const createCardObj = (cardTitle, imgUrl, author, platform, description) => {
+const createCardObj = (cardTitle, imgUrl, author, platform, description, link) => {
     let imgId = cardTitle.replace(/\s/g , "_")+"imgId"+Math.floor(Math.random()*9999);
     return {
         cardTitle,
@@ -50,7 +57,8 @@ const createCardObj = (cardTitle, imgUrl, author, platform, description) => {
         imgUrl,
         author,
         platform,
-        description
+        description,
+        link
     }
 }
 
@@ -85,7 +93,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="checkboxSquare">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -98,13 +106,12 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox">
+                                        <input type="checkbox"  class="checkboxSquare">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
                                     </label>
                                 </div>
-
                                 <p>80 BPM</p>
                             </div>
                         </li>
@@ -112,7 +119,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox">
+                                        <input type="checkbox"  class="checkboxSquare">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -125,7 +132,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox">
+                                        <input type="checkbox"  class="checkboxSquare">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -137,13 +144,16 @@ task.innerHTML = `
                     </ul>
                 </div>
 
-        </div>  
-        <div class="btn-practice">
-            <button class="basic-shadow"><h3>Practice now</h3></button>
         </div>
+        <a target="_blank" href="${obj.link}">
+            <div class="btn-practice">
+                <button class="basic-shadow"> 
+                    <h3>Practice now</h3>
+                </button>
+            </div>
+        </a>
 `
 document.querySelector(targetDiv).appendChild(task);
-// {/* <li class="task basic-shadow"></li> */}
 task.classList.add("task");
 task.classList.add("basic-shadow");
 document.getElementById(obj.imgId).style.backgroundImage = `url(${obj.imgUrl})`;
@@ -151,17 +161,19 @@ document.getElementById(obj.imgId).style.backgroundImage = `url(${obj.imgUrl})`;
 }
 
 //CREATE LEARNING BLOCK
-function createLearningBlock(title,level){
+function createLearningBlock(title,levelNumber,level){
     let blockTitle = title;
     let blockId = title.replace(/\s/g,"-");
-    // blockId += level;
+    let finalId = "A"+ levelNumber + "-" + blockId
+
     const learningBlock = document.createElement("div");
+    
     learningBlock.innerHTML = `
         <div class="block-title block-collapsed">
         <img class="icon" src="./img/icons/layers.svg" alt="">
             <h2>${blockTitle}</h2>
         </div>
-        <div class="tasks-container left-red hidden" id=${blockId}>
+        <div class="tasks-container left-red hidden" id=${finalId}>
             <ul></ul>
         </div>
 `
@@ -171,63 +183,99 @@ level.appendChild(learningBlock)
 }
 
 //Display the learning blocks on the different levels
-createLearningBlock("Songs block",level1);
-createLearningBlock("Finger dexterity",level1);
-createLearningBlock("Rythm foundations",level1);
-createLearningBlock("Music theory in action",level1);
-createLearningBlock("Hand coordination",level1);
+createLearningBlock("Songs block",1,level1);
+createLearningBlock("Finger dexterity",1,level1);
+createLearningBlock("Rythm foundations",1,level1);
+createLearningBlock("Music theory in action",1,level1);
+createLearningBlock("Hand coordination",1,level1);
 
-createLearningBlock("Songs block",level2);
-createLearningBlock("Finger dexterity",level2);
-createLearningBlock("Rythm foundations",level2);
-createLearningBlock("Music theory in action",level2);
-createLearningBlock("Hand coordination",level2);
+createLearningBlock("Songs block",2,level2);
+createLearningBlock("Finger dexterity",2,level2);
+createLearningBlock("Rythm foundations",2,level2);
+createLearningBlock("Music theory in action",2,level2);
+createLearningBlock("Hand coordination",2,level2);
 
-createLearningBlock("Songs block",level3);
-createLearningBlock("Finger dexterity",level3);
-createLearningBlock("Rythm foundations",level3);
-createLearningBlock("Music theory in action",level3);
-createLearningBlock("Hand coordination",level3);
+createLearningBlock("Songs block",3,level3);
+createLearningBlock("Finger dexterity",3,level3);
+createLearningBlock("Rythm foundations",3,level3);
+createLearningBlock("Music theory in action",3,level3);
+createLearningBlock("Hand coordination",3,level3);
 
-createLearningBlock("Songs block",level4);
-createLearningBlock("Finger dexterity",level4);
-createLearningBlock("Rythm foundations",level4);
-createLearningBlock("Music theory in action",level4);
-createLearningBlock("Hand coordination",level4);
+createLearningBlock("Songs block",4,level4);
+createLearningBlock("Finger dexterity",4,level4);
+createLearningBlock("Rythm foundations",4,level4);
+createLearningBlock("Music theory in action",4,level4);
+createLearningBlock("Hand coordination",4,level4);
 
 
 // / CREATE OBJECTS OF THE TASKS level1.songs2.jpg
-let level1Songs1 = createCardObj("1. Row Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
-let level1Songs2 = createCardObj("2. Ode to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.");
+// LEVEL 1
+let level1Songs1 = createCardObj("1. Row Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1Songs2 = createCardObj("2. Ode to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1FingerDexterity1 = createCardObj("1. Row Row", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
-let level1FingerDexterity2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1FingerDexterity1 = createCardObj("1. Row sRow", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1FingerDexterity2 = createCardObj("2. Row Rsdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1RythmFoundations1 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
-let level1RythmFoundations2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1RythmFoundations1 = createCardObj("2. Raow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1RythmFoundations2 = createCardObj("2. Rasow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1MusicTheory1 = createCardObj("1s. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
-let level1MusicTheory2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1MusicTheory1 = createCardObj("1s. Row Rasdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1MusicTheory2 = createCardObj("2. Roasdfw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1HandCoordination1 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
-let level1HandCoordination2 = createCardObj("2. Row Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description");
+let level1HandCoordination1 = createCardObj("2. Roasdw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1HandCoordination2 = createCardObj("2. Rasd    ow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+//  LEVEL 2
+
+let level2Songs1 = createCardObj("1. Row Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level2Songs2 = createCardObj("2. Ode to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+
+let level2FingerDexterity1 = createCardObj("1. Row sRow", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2FingerDexterity2 = createCardObj("2. Row Rsdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+
+let level2RythmFoundations1 = createCardObj("2. Raow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2RythmFoundations2 = createCardObj("2. Rasow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+
+let level2MusicTheory1 = createCardObj("1s. Row Rasdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2MusicTheory2 = createCardObj("2. Roasdfw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+
+let level2HandCoordination1 = createCardObj("2. Roasdw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2HandCoordination2 = createCardObj("2. Rasd    ow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+
+
 
 // Populate each level with the tasks
-createCard(level1Songs1, "#Songs-block > UL");
-createCard(level1Songs2, "#Songs-block > UL");
+// LEVEL1
+createCard(level1Songs1, "#A1-Songs-block > UL");
+createCard(level1Songs2, "#A1-Songs-block > UL");
 
-createCard(level1FingerDexterity1, "#Finger-dexterity > UL");
-createCard(level1FingerDexterity2, "#Finger-dexterity > UL");
+createCard(level1FingerDexterity1, "#A1-Finger-dexterity > UL");
+createCard(level1FingerDexterity2, "#A1-Finger-dexterity > UL");
 
-createCard(level1RythmFoundations1, "#Rythm-foundations > UL");
-createCard(level1RythmFoundations2, "#Rythm-foundations > UL");
+createCard(level1RythmFoundations1, "#A1-Rythm-foundations > UL");
+createCard(level1RythmFoundations2, "#A1-Rythm-foundations > UL");
 
-createCard(level1MusicTheory1, "#Music-theory-in-action > UL"); 
-// createCard(level1MusicTheory2, "#Music-theory-in-action > UL");
+createCard(level1MusicTheory1, "#A1-Music-theory-in-action > UL"); 
+createCard(level1MusicTheory2, "#A1-Music-theory-in-action > UL");
 
-createCard(level1HandCoordination1, "#Hand-coordination > UL");
-createCard(level1HandCoordination2, "#Hand-coordination > UL");
+createCard(level1HandCoordination1, "#A1-Hand-coordination > UL");
+createCard(level1HandCoordination2, "#A1-Hand-coordination > UL");
 
+
+// LEVEL 2
+createCard(level2Songs1, "#A2-Songs-block > UL");
+createCard(level2Songs2, "#A2-Songs-block > UL");
+
+createCard(level2FingerDexterity1, "#A2-Finger-dexterity > UL");
+createCard(level2FingerDexterity2, "#A2-Finger-dexterity > UL");
+
+createCard(level2RythmFoundations1, "#A2-Rythm-foundations > UL");
+createCard(level2RythmFoundations2, "#A2-Rythm-foundations > UL");
+
+createCard(level2MusicTheory1, "#A2-Music-theory-in-action > UL"); 
+createCard(level2MusicTheory2, "#A2-Music-theory-in-action > UL");
+
+createCard(level2HandCoordination1, "#A2-Hand-coordination > UL");
+createCard(level2HandCoordination2, "#A2-Hand-coordination > UL");
 
 
 
@@ -305,8 +353,6 @@ for(let i=0;i<checkboxes.length;i++){
 //On load, show level 1 by default
 levelChange(level1,level1Button);
 
-
-
 /// FAQ LAYOVER SHOW AND HIDE
 const closeButton = document.querySelector(".close-button");
 const faqOverlay = document.querySelector(".faq-overlay");
@@ -327,139 +373,20 @@ faqOverlay.addEventListener("click", function(e){
 
 
 
-//////////// SLIDER
-!(function(d){
-    // Variables to target our base class,  get carousel items, count how many carousel items there are, set the slide to 0 (which is the number that tells us the frame we're on), and set motion to true which disables interactivity.
-    var itemClassName = "carousel__photo";
-        items = d.getElementsByClassName(itemClassName),
-        totalItems = items.length,
-        slide = 0,
-        moving = true; 
-  
-    // To initialise the carousel we'll want to update the DOM with our own classes
-    function setInitialClasses() {
-  
-      // Target the last, initial, and next items and give them the relevant class.
-      // This assumes there are three or more items.
-      items[totalItems - 1].classList.add("prev");
-      items[0].classList.add("active");
-      items[1].classList.add("next");
-    }
-  
-    // Set click events to navigation buttons
-  
-    function setEventListeners() {
-      var next = d.getElementsByClassName('carousel__button--next')[0],
-          prev = d.getElementsByClassName('carousel__button--prev')[0];
-  
-      next.addEventListener('click', moveNext);
-      prev.addEventListener('click', movePrev);
-    }
-  
-    // Disable interaction by setting 'moving' to true for the same duration as our transition (0.5s = 500ms)
-    function disableInteraction() {
-      moving = true;
-  
-      setTimeout(function(){
-        moving = false
-      }, 500);
-    }
-  
-    function moveCarouselTo(slide) {
-  
-      // Check if carousel is moving, if not, allow interaction
-      if(!moving) {
-  
-        // temporarily disable interactivity
-        disableInteraction();
-  
-        // Preemptively set variables for the current next and previous slide, as well as the potential next or previous slide.
-        var newPrevious = slide - 1,
-            newNext = slide + 1,
-            oldPrevious = slide - 2,
-            oldNext = slide + 2;
-  
-        // Test if carousel has more than three items
-        if ((totalItems - 1) > 3) {
-  
-          // Checks if the new potential slide is out of bounds and sets slide numbers
-          if (newPrevious <= 0) {
-            oldPrevious = (totalItems - 1);
-          } else if (newNext >= (totalItems - 1)){
-            oldNext = 0;
-          }
-  
-          // Check if current slide is at the beginning or end and sets slide numbers
-          if (slide === 0) {
-            newPrevious = (totalItems - 1);
-            oldPrevious = (totalItems - 2);
-            oldNext = (slide + 1);
-          } else if (slide === (totalItems -1)) {
-            newPrevious = (slide - 1);
-            newNext = 0;
-            oldNext = 1;
-          }
-  
-          // Now we've worked out where we are and where we're going, by adding and removing classes, we'll be triggering the carousel's transitions.
-  
-          // Based on the current slide, reset to default classes.
-          items[oldPrevious].className = itemClassName;
-          items[oldNext].className = itemClassName;
-  
-          // Add the new classes
-          items[newPrevious].className = itemClassName + " prev";
-          items[slide].className = itemClassName + " active";
-          items[newNext].className = itemClassName + " next";
+
+
+/////// SAVE THE CHECKED BOXES INTO LOCALSTORAGE
+
+setTimeout(saveCurrentProgress, 6000);
+
+function saveCurrentProgress (){
+    const checkboxes = document.querySelectorAll(".checkboxSquare");
+    for(let i=0;i<checkboxes.length-1;i++){
+        if(checkboxes[i].checked==true){
+            console.log("BOOM", checkboxes[i]);
         }
-      }
     }
-  
-    // Next navigation handler
-    function moveNext() {
-  
-      // Check if moving
-      if (!moving) {
-  
-        // If it's the last slide, reset to 0, else +1
-        if (slide === (totalItems - 1)) {
-          slide = 0;
-        } else {
-          slide++;
-        }
-  
-        // Move carousel to updated slide
-        moveCarouselTo(slide);
-      }
-    }
-  
-    // Previous navigation handler
-    function movePrev() {
-  
-      // Check if moving
-      if (!moving) {
-  
-        // If it's the first slide, set as the last slide, else -1
-        if (slide === 0) {
-          slide = (totalItems - 1);
-        } else {
-          slide--;
-        }
-  
-        // Move carousel to updated slide
-        moveCarouselTo(slide);
-      }
-    }
-  
-    // Initialise carousel
-    function initCarousel() {
-      setInitialClasses();
-      setEventListeners();
-  
-      // Set moving to false now that the carousel is ready
-      moving = false;
-    }
-  
-    // make it rain
-    initCarousel();
-  
-  }(document));
+    checkboxes.checked = false;
+
+    // console.log("BOOM", checkboxes[0].checked)
+}
