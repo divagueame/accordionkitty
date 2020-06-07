@@ -66,6 +66,9 @@ const createCardObj = (cardTitle, imgUrl, author, platform, description, link) =
 //Create task card 
 function createCard(obj,targetDiv){
 const task = document.createElement("li");
+let thisTaskId = obj.cardTitle.replace(/\s/g , "_");
+thisTaskId += obj.author.replace(/\s/g , "_");
+
 task.innerHTML = `
         <div class="inline-please task-title ">
             <img class="icon" src="./img/icons/chevrons-right.svg" alt="">
@@ -93,7 +96,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox" class="checkboxSquare">
+                                        <input type="checkbox" class="checkboxSquare" id="${thisTaskId}-1">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -106,7 +109,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox"  class="checkboxSquare">
+                                        <input type="checkbox"  class="checkboxSquare"  id="${thisTaskId}-2">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -119,7 +122,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox"  class="checkboxSquare">
+                                        <input type="checkbox"  class="checkboxSquare"  id="${thisTaskId}-3">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -132,7 +135,7 @@ task.innerHTML = `
                             <div class="checkbox-wrapper">
                                 <div class="grid">
                                     <label class="checkbox path">
-                                        <input type="checkbox"  class="checkboxSquare">
+                                        <input type="checkbox"  class="checkboxSquare"  id="${thisTaskId}-4">
                                         <svg viewBox="0 0 21 21">
                                             <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                         </svg>
@@ -213,33 +216,33 @@ createLearningBlock("Hand coordination",4,level4);
 let level1Songs1 = createCardObj("1. Row Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 let level1Songs2 = createCardObj("2. Ode to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1FingerDexterity1 = createCardObj("1. Row sRow", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1FingerDexterity1 = createCardObj("1. Alternating thirds", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 let level1FingerDexterity2 = createCardObj("2. Row Rsdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1RythmFoundations1 = createCardObj("2. Raow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
-let level1RythmFoundations2 = createCardObj("2. Rasow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1RythmFoundations1 = createCardObj("1. Make it clap", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1RythmFoundations2 = createCardObj("2. Clap it more!", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1MusicTheory1 = createCardObj("1s. Row Rasdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
-let level1MusicTheory2 = createCardObj("2. Roasdfw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1MusicTheory1 = createCardObj("1. C Scale", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1MusicTheory2 = createCardObj("2. C Chord", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level1HandCoordination1 = createCardObj("2. Roasdw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
-let level1HandCoordination2 = createCardObj("2. Rasd    ow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1HandCoordination1 = createCardObj("1. Cool Exercise", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level1HandCoordination2 = createCardObj("2. Cool boring exercises!", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 //  LEVEL 2
 
-let level2Songs1 = createCardObj("1. Row Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
-let level2Songs2 = createCardObj("2. Ode to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level2Songs1 = createCardObj("1. R123ow Row", './img/task-bg/level1.songs1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
+let level2Songs2 = createCardObj("2. O14de to Joy", './img/task-bg/level1.songs2.jpg',  "Libertsy bellows.", "Youtube ","Happines for sad moments.", "https://www.youtube.com/watch?v=vz2veabxKrI&list=PLjGI9hR3JLcnBwLF7AYCLqeWyRGrnipf");
 
-let level2FingerDexterity1 = createCardObj("1. Row sRow", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
-let level2FingerDexterity2 = createCardObj("2. Row Rsdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2FingerDexterity1 = createCardObj("1. Ro35234w sRow", './img/task-bg/level1.fingerDexterity1.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2FingerDexterity2 = createCardObj("2. Row12 Rsdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
 
-let level2RythmFoundations1 = createCardObj("2. Raow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
-let level2RythmFoundations2 = createCardObj("2. Rasow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2RythmFoundations1 = createCardObj("2. Rao345w Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2RythmFoundations2 = createCardObj("2. Raso5642vw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
 
-let level2MusicTheory1 = createCardObj("1s. Row Rasdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
-let level2MusicTheory2 = createCardObj("2. Roasdfw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2MusicTheory1 = createCardObj("1s. Row Ravvsdfow", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2MusicTheory2 = createCardObj("2. Roasc2crdfw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
 
-let level2HandCoordination1 = createCardObj("2. Roasdw Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
-let level2HandCoordination2 = createCardObj("2. Rasd    ow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2HandCoordination1 = createCardObj("2. Roasdc3w Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
+let level2HandCoordination2 = createCardObj("2. Racssd    ow Row", './img/task-bg/level1.fingerDexterity2.jpg',  "Libertsy bellows.", "Youtube ","This is gosing the description","");
 
 
 
@@ -377,16 +380,36 @@ faqOverlay.addEventListener("click", function(e){
 
 /////// SAVE THE CHECKED BOXES INTO LOCALSTORAGE
 
-setTimeout(saveCurrentProgress, 6000);
 
-function saveCurrentProgress (){
+function retrieveCurrentProgress(){
     const checkboxes = document.querySelectorAll(".checkboxSquare");
     for(let i=0;i<checkboxes.length-1;i++){
-        if(checkboxes[i].checked==true){
-            console.log("BOOM", checkboxes[i]);
+
+        console.log(localStorage.getItem(checkboxes[i].id))
+
+        if(localStorage.getItem(checkboxes[i].id)=="true"){
+            checkboxes[i].checked = true;
+        } else {
+            checkboxes[i].checked = false;
+            // console.log(localStorage.getItem(checkboxes[i]), "Retrieved true")
         }
     }
-    checkboxes.checked = false;
-
-    // console.log("BOOM", checkboxes[0].checked)
 }
+function saveCurrentProgress (){  
+    const checkboxes = document.querySelectorAll(".checkboxSquare");
+    for(let i=0;i<checkboxes.length-1;i++){
+        if(checkboxes[i].checked == true){
+            
+            localStorage.setItem(checkboxes[i].id,true);
+        } else {
+            localStorage.setItem(checkboxes[i].id,false);
+        }
+    }
+}
+setTimeout(retrieveCurrentProgress, 400);
+// setTimeout(saveCurrentProgress, 6000);
+
+addEventListener('unload', (event) => {
+    console.log('The page is unloaded');
+    saveCurrentProgress()
+});
