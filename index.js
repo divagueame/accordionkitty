@@ -342,17 +342,19 @@ function removeProgress(){
 }
 
 
+function updateProgressBar(){
+    for(let i=0;i<checkboxes.length;i++){
+        checkboxes[i].addEventListener('change', function(event){
+            if(event.target.checked){
+                addProgress()
+            } else {
+                removeProgress()
+            }
+        })
+    };
+}
 
-for(let i=0;i<checkboxes.length;i++){
-    checkboxes[i].addEventListener('change', function(event){
-        if(event.target.checked){
-            addProgress()
-        } else {
-            removeProgress()
-        }
-    })
-};
-
+updateProgressBar()
 //On load, show level 1 by default
 levelChange(level1,level1Button);
 
@@ -379,21 +381,20 @@ faqOverlay.addEventListener("click", function(e){
 
 
 /////// SAVE THE CHECKED BOXES INTO LOCALSTORAGE
-
-
 function retrieveCurrentProgress(){
     const checkboxes = document.querySelectorAll(".checkboxSquare");
     for(let i=0;i<checkboxes.length-1;i++){
-
         console.log(localStorage.getItem(checkboxes[i].id))
 
         if(localStorage.getItem(checkboxes[i].id)=="true"){
             checkboxes[i].checked = true;
+            addProgress()
         } else {
             checkboxes[i].checked = false;
             // console.log(localStorage.getItem(checkboxes[i]), "Retrieved true")
         }
-    }
+    };
+    
 }
 function saveCurrentProgress (){  
     const checkboxes = document.querySelectorAll(".checkboxSquare");
@@ -405,11 +406,9 @@ function saveCurrentProgress (){
             localStorage.setItem(checkboxes[i].id,false);
         }
     }
-}
-setTimeout(retrieveCurrentProgress, 400);
-// setTimeout(saveCurrentProgress, 6000);
+};
 
+setTimeout(retrieveCurrentProgress, 400);
 addEventListener('unload', (event) => {
-    console.log('The page is unloaded');
     saveCurrentProgress()
 });
